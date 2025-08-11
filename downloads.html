@@ -1,3 +1,14 @@
+Certo\! Entendido. Você quer o código completo para a página `downloads.html` com o vídeo de fundo, mantendo o estilo da página principal.
+
+Aqui está o código HTML completo e atualizado para a sua página de downloads. Ele inclui o vídeo de fundo do Lapras, os botões com os links que você forneceu e a mesma estética da página principal.
+
+-----
+
+### Código HTML para a página `downloads.html` com vídeo de fundo
+
+Copie e cole todo o código abaixo no seu arquivo `downloads.html`.
+
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,11 +24,20 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #1a1a2e; /* Cor de fundo escura */
-            background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg'); /* Exemplo de sprite de Pokémon */
-            background-size: 150px;
-            background-repeat: repeat;
-            background-position: top left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            filter: brightness(50%); /* Escurece o vídeo para o texto ficar mais visível */
         }
 
         .container {
@@ -26,7 +46,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para o conteúdo */
+            background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente para o conteúdo */
             padding: 20px;
         }
 
@@ -89,10 +109,14 @@
         .download-btn:hover {
             transform: scale(1.05);
         }
-
     </style>
 </head>
 <body>
+    <video autoplay muted loop class="video-background">
+        <source src="https://cdn.discordapp.com/attachments/1149354918155653152/1404264404207538186/1670947008-1670947008-pokemon-kyogre-lively-wallpaper.mp4?ex=689a8ea3&is=68993d23&hm=36bb6e3e0dd1f2f473585db4e800f23b07388b50d5d28924a6baa4e6386fe22d&" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
     <div class="container">
         <h1>DOWNLOAD MODPACK</h1>
         
@@ -120,7 +144,7 @@
 
             <div class="download-item">
                 <h2>DOWNLOAD DAS TEXTURAS</h2>
-                <a href="https://cdn.discordapp.com/attachments/1149354918155653152/1404255328421412944/TEXTURAS.zip?ex=689a8630&is=689934b0&hm=bbcef444e65d3735e37e6cafea0ba81518ebd9db098babf66512eb6bce008caa&" class="download-btn">
+                <a href="https://cdn.discordapp.com/attachments/1149354918155653152/1404255328421412944/TEXTURAS.zip?ex=689a8630&is=689934b0&hm=bbcef444e65d3735e37e6cafea0ba81518ebd9db098babf66512eb6bce008caa&" class="download-btn" download>
                     ↓ Baixar
                 </a>
             </div>
@@ -128,3 +152,4 @@
     </div>
 </body>
 </html>
+```
