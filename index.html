@@ -59,13 +59,21 @@
             color: #fff;
             margin: 0;
         }
+        
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-        .downloads-btn {
+        .action-btn {
             background-color: #ffde00;
             color: #3b4cca;
             border: 2px solid #3b4cca;
             padding: 15px 30px;
-            font-size: 1.5em;
+            font-size: 1.2em;
+            font-family: 'Press Start 2P', cursive;
             text-decoration: none;
             border-radius: 10px;
             display: inline-block;
@@ -73,14 +81,14 @@
             cursor: pointer;
         }
 
-        .downloads-btn:hover {
+        .action-btn:hover {
             transform: scale(1.1);
         }
     </style>
 </head>
 <body>
     <video autoplay muted loop class="video-background">
-        <source src="https://cdn.discordapp.com/attachments/1149354918155653152/1404261109812301864/mylivewallpapers-com-Lake-of-Rage-4K.mp4?ex=689a8b92&is=68993a12&hm=d94817c169e53e4ac5f19321d056d8d7a6cefb4a49582403098a3dcd72acc8f9&">
+        <source src="https://cdn.discordapp.com/attachments/1149354918155653152/1404261109812301864/mylivewallpapers-com-Lake-of-Rage-4K.mp4?ex=689a8b92&is=68993a12&hm=d94817c169e53e4ac5f19321d056d8d7a6cefb4a49582403098a3dcd72acc8f9&" type="video/mp4">
         Seu navegador não suporta o elemento de vídeo.
     </video>
 
@@ -91,7 +99,11 @@
             <p class="players-online">Jogadores online: <span id="player-count">...</span></p>
         </div>
 
-        <a href="downloads.html" class="downloads-btn">DOWNLOADS</a>
+        <div class="buttons-container">
+            <a href="downloads.html" class="action-btn">DOWNLOADS</a>
+            
+            <a href="https://discord.gg/pEa7mpF8vP" target="_blank" class="action-btn">ENTRE EM NOSSO DISCORD</a>
+        </div>
     </div>
 
     <script>
@@ -119,4 +131,3 @@
     </script>
 </body>
 </html>
-
