@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COBBLEQUEST - Seu Servidor Cobblemon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            filter: brightness(50%); /* Escurece o vídeo para o texto ficar mais visível */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente para o conteúdo */
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: #ffde00; /* Amarelo Pikachu */
+            text-shadow: 4px 4px #3b4cca; /* Azul Pokémon */
+            margin-bottom: 20px;
+        }
+
+        .status-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .players-online {
+            font-size: 1.5em;
+            color: #fff;
+            margin: 0;
+        }
+
+        .downloads-btn {
+            background-color: #ffde00;
+            color: #3b4cca;
+            border: 2px solid #3b4cca;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            text-decoration: none;
+            border-radius: 10px;
+            display: inline-block;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .downloads-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="https://cdn.discordapp.com/attachments/1149354918155653152/1404235441884106752/lapras-on-the-sea-under-the-starry-night-sky-pokemon-moewalls-com.mp4?ex=689a73aa&is=6899222a&hm=9bfd94e73f97ec48c3057434be8d15aec2acd144325e7744c9101a832a77cdf3&" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <div class="container">
+        <h1>COBBLEQUEST</h1>
+        
+        <div class="status-box">
+            <p class="players-online">Jogadores online: <span id="player-count">...</span></p>
+        </div>
+
+        <a href="downloads.html" class="downloads-btn">DOWNLOADS</a>
+    </div>
+
+    <script>
+        const serverIp = "sd-br7.blazebr.com:28547";
+        const playerCountElement = document.getElementById('player-count');
+
+        async function getPlayerCount() {
+            try {
+                const response = await fetch(`https://api.mcsrvstat.us/2/${serverIp}`);
+                const data = await response.json();
+
+                if (data.online) {
+                    playerCountElement.textContent = `${data.players.online}/${data.players.max}`;
+                } else {
+                    playerCountElement.textContent = "Offline";
+                }
+            } catch (error) {
+                console.error("Erro ao buscar a contagem de jogadores:", error);
+                playerCountElement.textContent = "Erro";
+            }
+        }
+
+        getPlayerCount();
+        setInterval(getPlayerCount, 60000); // Atualiza a cada 1 minuto
+    </script>
+</body>
+</html>
